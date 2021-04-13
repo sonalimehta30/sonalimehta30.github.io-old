@@ -29,18 +29,21 @@ app.controller('myCtrl',function ($scope,$http,$window) {
     function check_screen_size(){
         $scope.split_size = 5
         if($(window).width()>=1440){
+        if($(window).width()>1024){
             $scope.split_size = 5
-        }
-        if($(window).width()>500 && $(window).width()<800){
+        }else if($(window).width()<=1024 && $(window).width()>786){
             $scope.split_size = 3
-        }
-        if($(window).width()<500){
+        }else if($(window).width()<=786 && $(window).width()>425){
             $scope.split_size = 2
+        }else{
+            $scope.split_size = 1
         }
-        console.log($(window).width(),$scope.split_size)
         $scope.mainList = chunk_arr(arr_mainList);
 
     }
+    $(document).on('click', '.dropdown-menu', function (e) {
+        e.stopPropagation();
+    });
     function chunk_arr(arr){
         return_arr = []
         for(x =0 ; x<arr.length ; x+=$scope.split_size){
