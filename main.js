@@ -28,7 +28,6 @@ app.controller('myCtrl',function ($scope,$http,$window) {
     });
     function check_screen_size(){
         $scope.split_size = 5
-        if($(window).width()>=1440){
         if($(window).width()>1024){
             $scope.split_size = 5
         }else if($(window).width()<=1024 && $(window).width()>786){
